@@ -141,6 +141,163 @@
             padding: 2rem;
             margin-top: 2rem;
         }
+
+        /* Updated color scheme */
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #ff4d4d;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --gradient: linear-gradient(135deg, #ff4d4d, #ff8533);
+            --primary-gradient: linear-gradient(135deg, #6366f1, #a855f7);
+            --secondary-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --background-gradient: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            --card-gradient: linear-gradient(135deg, #ffffff, #f1f5f9);
+            --price-gradient: linear-gradient(135deg, #6366f1, #ec4899);
+        }
+
+        /* Modern Navbar Design */
+        header {
+            background: var(--primary-color);
+            padding: 1.2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--gradient);
+            color: white;
+        }
+
+        /* Updated Price Cards */
+        .price-card {
+            background: var(--card-gradient);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            margin: -2px;
+            border-radius: inherit;
+            background: var(--primary-gradient);
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Update price text styling */
+        .price {
+            font-size: 2.2rem;
+            background: var(--price-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        /* Update section titles */
+        .section-title {
+            color: #1e293b;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Update booking form background */
+        .booking-form {
+            background: var(--card-gradient);
+            border: 2px solid transparent;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+        }
+
+        .booking-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            margin: -2px;
+            border-radius: inherit;
+            background: var(--secondary-gradient);
+        }
+
+        /* Update button style */
+        .btn {
+            background: var(--primary-gradient);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary-gradient);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Update form input fields */
+        .form-group input,
+        .form-group select {
+            background: white;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Update gallery item styling */
+        .gallery-item {
+            background: var(--card-gradient);
+            border: 2px solid transparent;
+        }
+
+        .gallery-caption {
+            background: var(--primary-gradient);
+            opacity: 0.95;
+        }
     </style>
 </head>
 <body>
@@ -152,16 +309,19 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#booking">Book Now</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero" id="home">
+    <section class="hero" id="home" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+        url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1920');">
         <div class="hero-content">
             <h2>Welcome to Dhiraj Haircuts Zone</h2>
-            <p>Professional Hair Styling for Boys</p>
+            <p>Professional Hair Styling for Modern Men</p>
+            <a href="#booking" class="btn" style="display: inline-block; margin-top: 20px;">Book Now</a>
         </div>
     </section>
 
@@ -169,33 +329,46 @@
         <h2 class="section-title">Our Services & Pricing</h2>
         <div class="price-grid">
             <div class="price-card">
-                <h3>Basic Package</h3>
+                <h3>Basic Trim</h3>
+                <div class="price">₹60</div>
+                <ul>
+                    <li>Simple Haircut</li>
+                    <li>Basic Styling</li>
+                    <li>Water Spray</li>
+                </ul>
+            </div>
+            <div class="price-card">
+                <h3>Classic Cut</h3>
                 <div class="price">₹150</div>
                 <ul>
                     <li>Regular Haircut</li>
                     <li>Basic Styling</li>
                     <li>Normal Wash</li>
+                    <li>Hair Gel Styling</li>
                 </ul>
             </div>
             <div class="price-card">
-                <h3>Premium Package</h3>
+                <h3>Premium Style</h3>
                 <div class="price">₹250</div>
                 <ul>
                     <li>Trendy Haircut</li>
                     <li>Premium Styling</li>
                     <li>Hair Wash</li>
-                    <li>Face Wash (Basic)</li>
+                    <li>Face Wash</li>
+                    <li>Basic Hair Color</li>
                 </ul>
             </div>
             <div class="price-card">
                 <h3>Deluxe Package</h3>
-                <div class="price">₹350</div>
+                <div class="price">₹360</div>
                 <ul>
                     <li>Designer Haircut</li>
                     <li>Advanced Styling</li>
                     <li>Premium Hair Wash</li>
                     <li>Premium Face Wash</li>
                     <li>Head Massage</li>
+                    <li>Hair Treatment</li>
+                    <li>Premium Hair Color</li>
                 </ul>
             </div>
         </div>
@@ -231,6 +404,65 @@
             </div>
             <button type="submit" class="btn">Book Appointment</button>
         </form>
+    </section>
+
+    <section class="section" id="gallery">
+        <h2 class="section-title">Trending Hairstyles</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1592647420148-bfcc177e2900?auto=format&fit=crop&w=600" 
+                     alt="Modern Fade">
+                <div class="gallery-caption">
+                    <h3>Modern Fade</h3>
+                    <p>₹60</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600" 
+                     alt="Textured Crop">
+                <div class="gallery-caption">
+                    <h3>Textured Crop</h3>
+                    <p>₹100</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600" 
+                     alt="Classic Pompadour">
+                <div class="gallery-caption">
+                    <h3>Classic Pompadour</h3>
+                    <p>₹150</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1620575537253-8e4c2ef524d6?auto=format&fit=crop&w=600" 
+                     alt="Side Sweep">
+                <div class="gallery-caption">
+                    <h3>Side Sweep</h3>
+                    <p>₹280</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600" 
+                     alt="Modern Quiff">
+                <div class="gallery-caption">
+                    <h3>Modern Quiff</h3>
+                    <p>₹300</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600" 
+                     alt="Sleek Undercut">
+                <div class="gallery-caption">
+                    <h3>Sleek Undercut</h3>
+                    <p>₹350</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer>
