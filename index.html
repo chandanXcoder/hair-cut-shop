@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhiraj Haircuts Zone - Boys Hair Styling</title>
+    <title>Haircut Zone in Bareilly - Find & Book Local Barbershops</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -47,16 +47,99 @@
             text-decoration: none;
         }
         .hero {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(23, 19, 19, 0.5)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1');
+            position: relative;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1920');
             background-size: cover;
             background-position: center;
-            height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-attachment: fixed;
+            margin-top: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.8));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
             text-align: center;
-            color: rgb(244, 235, 235);
-            margin-top: 60px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: var(--secondary-color);
         }
 
         .section {
@@ -432,13 +515,313 @@
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        /* New section styles */
+        #find-shop {
+            background: var(--card-bg);
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+            margin: 2rem 0;
+        }
+
+        .shop-finder {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .shop-finder input {
+            padding: 1rem;
+            border: 1px solid #475569;
+            border-radius: 5px;
+            background: #1e293b;
+            color: #f8fafc;
+        }
+
+        .shop-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .shop-card {
+            background: var(--card-dark-gradient);
+            border-radius: 10px;
+            padding: 1.5rem;
+            color: white;
+            position: relative;
+        }
+
+        .queue-info {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .distance {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--secondary-gradient);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        #locationSearch {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Replace the existing hero section with this updated version */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-gradient);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature i {
+            color: var(--secondary-color);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Add these styles to your existing CSS */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin-top: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.8));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <h1>Dhiraj Haircuts Zone</h1>
+                <h1>Haircut Zone in Bareilly</h1>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -450,12 +833,30 @@
         </nav>
     </header>
 
-    <section class="hero" id="home" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-        url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1920');">
+    <!-- Updated Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h2>Welcome to Dhiraj Haircuts Zone</h2>
-            <p>Professional Hair Styling for Modern Men</p>
-            <a href="#booking" class="btn" style="display: inline-block; margin-top: 20px;">Book Now</a>
+            <h1 class="hero-title">Bareilly's Premier Haircut Network</h1>
+            <p class="hero-subtitle">Discover & Book the Best Barbershops Near You</p>
+            <div class="hero-buttons">
+                <a href="#find-shop" class="btn btn-primary">Find Nearby Shops</a>
+                <a href="#pricing" class="btn btn-secondary">View Services</a>
+            </div>
+            <div class="hero-features">
+                <div class="feature">
+                    <i class="fas fa-cut"></i>
+                    <span>Expert Stylists</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <span>Real-time Booking</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Multiple Locations</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -547,15 +948,15 @@
                 <img src="https://images.unsplash.com/photo-1567894340315-735d7c361db0" alt="Low Fade">
                 <div class="gallery-caption">
                     <h3>Low Fade</h3>
-                    <p>₹180</p>
+                    <p>₹60</p>
                 </div>
             </div>
             
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e" alt="Textured Quiff">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/034/039/869/small_2x/low-fade-machine-haircut-for-handsome-bearded-man-on-white-background-hair-cut-with-a-smooth-transition-ai-generative-photo.jpg" alt="Textured Quiff">
                 <div class="gallery-caption">
                     <h3>Textured Quiff</h3>
-                    <p>₹250</p>
+                    <p>₹100</p>
                 </div>
             </div>
             
@@ -563,7 +964,7 @@
                 <img src="https://images.unsplash.com/photo-1582893561942-d61adcb2e534" alt="Slick Back">
                 <div class="gallery-caption">
                     <h3>Slick Back</h3>
-                    <p>₹200</p>
+                    <p>₹150</p>
                 </div>
             </div>
             
@@ -571,7 +972,7 @@
                 <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486" alt="High Fade">
                 <div class="gallery-caption">
                     <h3>High Fade</h3>
-                    <p>₹220</p>
+                    <p>₹200</p>
                 </div>
             </div>
             
@@ -605,6 +1006,19 @@
                     <h3>Modern Crop</h3>
                     <p>₹260</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add this new section after the hero section -->
+    <section class="section" id="find-shop">
+        <h2 class="section-title">Find Nearby Barbershops</h2>
+        <div class="shop-finder">
+            <input type="text" id="locationSearch" 
+                   placeholder="Enter your location in Bareilly" 
+                   onkeyup="searchShops()">
+            <div class="shop-list">
+                <!-- Shop cards will be dynamically populated -->
             </div>
         </div>
     </section>
@@ -652,5 +1066,100 @@
         }
     });
     </script>
+    <script>
+const shops = [
+    {
+        name: "Dhiraj Haircuts Zone",
+        address: "Civil Lines, Bareilly",
+        contact: "+91 81205 41108",
+        currentQueue: 4,
+        distance: null,
+        coordinates: { lat: 28.3670, lng: 79.4304 }
+    },
+    {
+        name: "Style Hub Salon",
+        address: "Pilibhit Road, Bareilly",
+        contact: "+91 9876543210",
+        currentQueue: 2,
+        distance: null,
+        coordinates: { lat: 28.3745, lng: 79.4249 }
+    },
+    {
+        name: "Modern Cuts",
+        address: "Rampur Garden, Bareilly",
+        contact: "+91 9876543211",
+        currentQueue: 3,
+        distance: null,
+        coordinates: { lat: 28.3601, lng: 79.4142 }
+    }
+    // Add more shops here
+];
+
+function searchShops() {
+    const searchInput = document.getElementById('locationSearch').value.toLowerCase();
+    const shopListContainer = document.querySelector('.shop-list');
+    shopListContainer.innerHTML = '';
+
+    shops.forEach(shop => {
+        if (shop.address.toLowerCase().includes(searchInput)) {
+            const shopCard = `
+                <div class="shop-card">
+                    <span class="distance">${calculateDistance(shop)} km</span>
+                    <h3>${shop.name}</h3>
+                    <p>📍 ${shop.address}</p>
+                    <p>📞 ${shop.contact}</p>
+                    <div class="queue-info">
+                        Current Queue: ${shop.currentQueue} people
+                        ${shop.currentQueue > 0 ? 
+                          `<br>Estimated Wait: ~${shop.currentQueue * 20} minutes` : 
+                          '<br>No Wait Time!'}
+                    </div>
+                    <button class="btn" onclick="bookAppointment('${shop.name}', ${shop.currentQueue})">
+                        Book Appointment
+                    </button>
+                </div>
+            `;
+            shopListContainer.innerHTML += shopCard;
+        }
+    });
+}
+
+function calculateDistance(shop) {
+    // This is a simplified distance calculation
+    // In a real app, use Google Maps Distance Matrix API
+    return Math.round(Math.random() * 5 * 10) / 10;
+}
+
+function bookAppointment(shopName, currentQueue) {
+    const waitTime = currentQueue * 20;
+    const message = `
+        Booking Confirmation at ${shopName}
+        
+        Current Queue Status:
+        - People ahead of you: ${currentQueue}
+        - Estimated wait time: ~${waitTime} minutes
+        
+        Would you like to confirm your booking?
+    `;
+    
+    if (confirm(message)) {
+        alert(`
+            Booking Confirmed!
+            Your queue number is: ${currentQueue + 1}
+            Please arrive at the shop in ${waitTime - 20} minutes.
+            We'll send a reminder on your phone when your turn is approaching.
+        `);
+        
+        // Update queue count
+        shops.find(s => s.name === shopName).currentQueue++;
+        searchShops(); // Refresh the display
+    }
+}
+
+// Initial shop list population
+window.onload = function() {
+    searchShops();
+}
+</script>
 </body>
 </html>
