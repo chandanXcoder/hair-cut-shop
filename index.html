@@ -5,817 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haircut Zone in Bareilly - Find & Book Local Barbershops</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        header {
-            background: rgba(15, 23, 42, 0.95);
-            color: #f9eded;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo h1 {
-            font-size: 24px;
-            color: #ecf0f1;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-        }
-        .hero {
-            position: relative;
-            height: 100vh;
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1920');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            margin-top: 0;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.8));
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff, #e2e8f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: #e2e8f0;
-            margin-bottom: 2rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            border: 2px solid white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover,
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .hero-features {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .feature {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-        }
-
-        .feature i {
-            font-size: 2rem;
-            color: var(--secondary-color);
-        }
-
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .price-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .price-card {
-            border: 1px solid #3e7ce5;
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            background: var(--card-dark-gradient);
-            color: #f8fafc;
-        }
-
-        .price-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .price {
-            font-size: 2rem;
-            color: #e74c3c;
-            margin: 1rem 0;
-            background: var(--price-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: bold;
-        }
-
-        .booking-form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: var(--card-dark-gradient);
-            color: #f8fafc;
-            border-radius: 10px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
-        }
-
-        .booking-form::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: -1;
-            margin: -2px;
-            border-radius: inherit;
-            background: var(--secondary-gradient);
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input, 
-        .form-group select {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #4f0f0f;
-            border-radius: 5px;
-            background: #1e293b;
-            color: #f8fafc;
-            border-color: #475569;
-        }
-
-        .btn {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background: var(--secondary-gradient);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #f8fafc;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        /* Updated color scheme */
-        :root {
-            --primary-color: #1a1a1a;
-            --secondary-color: #ff4d4d;
-            --text-light: #ffffff;
-            --text-dark: #333333;
-            --gradient: linear-gradient(135deg, #ff4d4d, #ff8533);
-            --primary-gradient: linear-gradient(135deg, #6366f1, #a855f7);
-            --secondary-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            --background-gradient: linear-gradient(135deg, #f8fafc, #e2e8f0);
-            --card-gradient: linear-gradient(135deg, #ffffff, #f1f5f9);
-            --price-gradient: linear-gradient(135deg, #6366f1, #ec4899);
-            --dark-gradient: linear-gradient(135deg, #0f172a, #1e293b);
-            --hero-gradient: linear-gradient(135deg, #3730a3, #6366f1);
-            --card-dark-gradient: linear-gradient(135deg, #1e293b, #334155);
-            --accent-gradient: linear-gradient(135deg, #6366f1, #818cf8);
-            --background-main: linear-gradient(135deg, #1f2937, #111827);
-            --card-bg: linear-gradient(135deg, #2d3748, #1a202c);
-        }
-
-        /* Modern Navbar Design */
-        header {
-            background: var(--primary-color);
-            padding: 1.2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background: var(--gradient);
-            color: white;
-        }
-
-        /* Updated Price Cards */
-        .price-card {
-            background: var(--card-gradient);
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .price-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: -1;
-            margin: -2px;
-            border-radius: inherit;
-            background: var(--primary-gradient);
-        }
-
-        .price-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
-        }
-
-        /* Update section titles */
-        .section-title {
-            color: #1e293b;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Update button style */
-        .btn {
-            background: var(--primary-gradient);
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background: var(--secondary-gradient);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
-        }
-
-        /* Update form input fields */
-        .form-group input,
-        .form-group select {
-            background: #1e293b;
-            color: #f8fafc;
-            border-color: #475569;
-        }
-
-        /* Update gallery item styling */
-        .gallery-item {
-            background: var(--card-gradient);
-            border: 2px solid transparent;
-        }
-
-        .gallery-caption {
-            background: var(--primary-gradient);
-            opacity: 0.95;
-        }
-
-        /* Dark Mode Styles */
-        .dark-mode {
-            --primary-color: #0a0a0a;
-            --background-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #ffffff;
-            --border-color: #333333;
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --gradient-dark: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-        }
-
-        /* Dark Mode Toggle Button */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            padding: 12px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .dark-mode-toggle i {
-            font-size: 20px;
-            color: white;
-        }
-
-        /* Dark Mode Specific Styles */
-        .dark-mode body {
-            background: var(--background-color);
-            color: var(--text-color);
-        }
-
-        .dark-mode .price-card {
-            background: var(--card-bg);
-            border-color: var(--border-color);
-        }
-
-        .dark-mode .booking-form {
-            background: var(--card-bg);
-        }
-
-        .dark-mode .form-group input,
-        .dark-mode .form-group select {
-            background: var(--card-bg);
-            border-color: var(--border-color);
-            color: var(--text-color);
-        }
-
-        body {
-            background: var(--background-main);
-            color: #f8fafc;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-        }
-
-        .gallery-item {
-            aspect-ratio: 1;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            color: white;
-        }
-
-        .price-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-        }
-
-        .section {
-            background: transparent;
-            backdrop-filter: blur(5px);
-        }
-
-        /* Update the booking form background */
-        .booking-form {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Update footer background */
-        footer {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* New section styles */
-        #find-shop {
-            background: var(--card-bg);
-            padding: 4rem 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
-            margin: 2rem 0;
-        }
-
-        .shop-finder {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .shop-finder input {
-            padding: 1rem;
-            border: 1px solid #475569;
-            border-radius: 5px;
-            background: #1e293b;
-            color: #f8fafc;
-        }
-
-        .shop-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .shop-card {
-            background: var(--card-dark-gradient);
-            border-radius: 10px;
-            padding: 1.5rem;
-            color: white;
-            position: relative;
-        }
-
-        .queue-info {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 0.5rem;
-            border-radius: 5px;
-            margin: 1rem 0;
-        }
-
-        .distance {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--secondary-gradient);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.9rem;
-        }
-
-        #locationSearch {
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        /* Replace the existing hero section with this updated version */
-        .hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 2rem;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-gradient);
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            color: white;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background: var(--secondary-gradient);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            padding: 1rem 2rem;
-            border: 2px solid white;
-            border-radius: 5px;
-            color: white;
-            text-decoration: none;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary-color);
-        }
-
-        .hero-features {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .feature i {
-            color: var(--secondary-color);
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-            }
-            
-            .hero-features {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-        }
-
-        /* Add these styles to your existing CSS */
-        .hero {
-            position: relative;
-            height: 100vh;
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1920');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            margin-top: 0;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,41,59,0.8));
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff, #e2e8f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: #e2e8f0;
-            margin-bottom: 2rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            border: 2px solid white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover,
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .hero-features {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .feature {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-        }
-
-        .feature i {
-            font-size: 2rem;
-            color: var(--secondary-color);
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-            }
-            
-            .hero-features {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -837,27 +27,49 @@
     <section class="hero" id="home">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Bareilly's Premier Haircut Network</h1>
-            <p class="hero-subtitle">Discover & Book the Best Barbershops Near You</p>
-            <div class="hero-buttons">
-                <a href="#find-shop" class="btn btn-primary">Find Nearby Shops</a>
-                <a href="#pricing" class="btn btn-secondary">View Services</a>
+            <div class="hero-main">
+                <h1 class="hero-title">Bareilly's Premier<br>Haircut Network</h1>
+                <p class="hero-subtitle">Experience the finest haircuts from top-rated barbershops near you</p>
+                <div class="hero-search">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Enter your location in Bareilly">
+                        <button class="search-btn">Find Shops</button>
+                    </div>
+                </div>
             </div>
             <div class="hero-features">
-                <div class="feature">
+                <div class="feature-card">
                     <i class="fas fa-cut"></i>
-                    <span>Expert Stylists</span>
+                    <h3>Expert Stylists</h3>
+                    <p>Professional haircuts by skilled barbers</p>
                 </div>
-                <div class="feature">
+                <div class="feature-card">
                     <i class="fas fa-clock"></i>
-                    <span>Real-time Booking</span>
+                    <h3>Real-time Booking</h3>
+                    <p>Instant appointments & queue updates</p>
                 </div>
-                <div class="feature">
+                <div class="feature-card">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>Multiple Locations</span>
+                    <h3>Multiple Locations</h3>
+                    <p>Find the nearest salon to you</p>
                 </div>
             </div>
         </div>
+        <!-- <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Partner Salons</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">10K+</span>
+                <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">4.8</span>
+                <span class="stat-label">Average Rating</span>
+            </div>
+        </div> -->
     </section>
 
     <section class="section" id="pricing">
@@ -910,35 +122,93 @@
     </section>
 
     <section class="section" id="booking">
-        <h2 class="section-title">Book Your Appointment</h2>
-        <form class="booking-form">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" required>
+        <div class="booking-container">
+            <h2 class="section-title">Schedule Your Perfect Haircut</h2>
+            <div class="booking-wrapper">
+                <div class="booking-info">
+                    <div class="info-card">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>Booking Instructions</h3>
+                        <ul>
+                            <li>Choose your preferred service</li>
+                            <li>Select date and time</li>
+                            <li>Receive instant confirmation</li>
+                            <li>Get SMS reminder before appointment</li>
+                        </ul>
+                    </div>
+                    <div class="timing-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Working Hours</h3>
+                        <p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
+                        <p>Sunday: 10:00 AM - 6:00 PM</p>
+                        <p class="highlight">Best time slots: 10 AM - 12 PM</p>
+                    </div>
+                </div>
+                
+                <form class="booking-form">
+                    <div class="form-header">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Book Your Slot</h3>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">
+                                <i class="fas fa-user"></i> Full Name
+                            </label>
+                            <input type="text" id="name" required placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i> Phone Number
+                            </label>
+                            <input type="tel" id="phone" required placeholder="Enter your mobile number">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">
+                                <i class="fas fa-calendar"></i> Preferred Date
+                            </label>
+                            <input type="date" id="date" required min="<?php echo date('Y-m-d'); ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="time">
+                                <i class="fas fa-clock"></i> Preferred Time
+                            </label>
+                            <input type="time" id="time" required min="09:00" max="20:00">
+                        </div>
+                    </div>
+
+                    <div class="form-group service-selection">
+                        <label for="service">
+                            <i class="fas fa-cut"></i> Select Service
+                        </label>
+                        <select id="service" required>
+                            <option value="" disabled selected>Choose your service package</option>
+                            <option value="basic">Basic Trim - ₹60</option>
+                            <option value="classic">Classic Cut - ₹150</option>
+                            <option value="premium">Premium Style - ₹250</option>
+                            <option value="deluxe">Deluxe Package - ₹360</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">
+                            <i class="fas fa-comment"></i> Special Instructions (Optional)
+                        </label>
+                        <textarea id="notes" rows="3" placeholder="Any specific requirements or preferences?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-book">
+                        <i class="fas fa-check-circle"></i> Confirm Booking
+                    </button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="date">Preferred Date</label>
-                <input type="date" id="date" required>
-            </div>
-            <div class="form-group">
-                <label for="time">Preferred Time</label>
-                <input type="time" id="time" required>
-            </div>
-            <div class="form-group">
-                <label for="service">Select Service</label>
-                <select id="service" required>
-                    <option value="">Choose a service</option>
-                    <option value="basic">Basic Package - ₹150</option>
-                    <option value="premium">Premium Package - ₹250</option>
-                    <option value="deluxe">Deluxe Package - ₹350</option>
-                </select>
-            </div>
-            <button type="submit" class="btn">Book Appointment</button>
-        </form>
+        </div>
     </section>
 
     <section class="section" id="gallery">
@@ -992,7 +262,7 @@
                 </div>
             </div>
             
-            <div class="gallery-item">
+            <!-- <div class="gallery-item">
                 <img src="https://images.unsplash.com/photo-1587776535733-b4c80a99d975" alt="Skin Fade">
                 <div class="gallery-caption">
                     <h3>Skin Fade</h3>
@@ -1006,29 +276,89 @@
                     <h3>Modern Crop</h3>
                     <p>₹260</p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
     <!-- Add this new section after the hero section -->
-    <section class="section" id="find-shop">
+    <!-- <section class="section" id="find-shop">
         <h2 class="section-title">Find Nearby Barbershops</h2>
         <div class="shop-finder">
             <input type="text" id="locationSearch" 
                    placeholder="Enter your location in Bareilly" 
                    onkeyup="searchShops()">
             <div class="shop-list">
-                <!-- Shop cards will be dynamically populated -->
+                 Shop cards will be dynamically populated 
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <footer>
-        <p>&copy; 2025 Dhiraj Haircuts Zone. All rights reserved.</p>
-        <p>📞 Contact: +91 1234567890</p>
-        <p>📍 Address: Your Location, City, State</p>
-        <p>⏰ Hours: Mon-Sat 9:00 AM - 8:00 PM</p>
-    </footer>
+    <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <p>Haircut Zone in Bareilly connects you with the best barbershops across the city. Experience professional haircuts and styling services at your convenience.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#pricing">Our Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#booking">Book Appointment</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact Info</h3>
+            <ul class="contact-info">
+                <li>
+                    <i class="fas fa-phone"></i>
+                    <span>+91 81205 41108</span>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <span>info@haircutzone.com</span>
+                </li>
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Civil Lines, Bareilly, Uttar Pradesh</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Business Hours</h3>
+            <ul class="business-hours">
+                <li>
+                    <span>Monday - Saturday:</span>
+                    <span>9:00 AM - 8:00 PM</span>
+                </li>
+                <li>
+                    <span>Sunday:</span>
+                    <span>10:00 AM - 6:00 PM</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 Haircut Zone in Bareilly. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <script>
         document.querySelector('.booking-form').addEventListener('submit', function(e) {
@@ -1037,9 +367,9 @@
         });
     </script>
     <!-- Add this button before the closing body tag -->
-    <button class="dark-mode-toggle" id="darkModeToggle">
+    <!-- <button class="dark-mode-toggle" id="darkModeToggle">
         <i class="fas fa-moon"></i>
-    </button>
+    </button> -->
     <!-- Add this JavaScript before the closing body tag -->
     <script>
     // Dark Mode Toggle
